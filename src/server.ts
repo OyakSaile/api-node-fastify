@@ -1,15 +1,8 @@
-import fastify from "fastify";
-import cookie from '@fastify/cookie';
-import { transactionRoutes } from "./routes/transaction";
+/* eslint-disable @typescript-eslint/no-floating-promises */
 
-const app = fastify();
+import { app } from './app'
+import { env } from './env'
 
-
-app.register(cookie)
-app.register(transactionRoutes, {
-  prefix: "transactions",
-});
-
-app.listen({ port: 3333 }).then(() => {
-  console.log("HTTP Server Running!");
-});
+app.listen({ port: env.PORT }).then(() => {
+  console.log('HTTP Server Running!')
+})
